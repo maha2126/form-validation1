@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { useRef } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App = () => {
+  const name = useRef()
+  const age =useRef()
+
+  const handleSubmit = event => {
+    event.preventDefault()
+    console.log(name.current.value);
+    console.log(age.current.value);
+  }
+
+  return <div>
+    <h1>Working with Forms!!</h1>
+    <form onSubmit={handleSubmit}>
+      <input ref={name} type="text"/>
+      <input ref={age} type="text"/>
+      <button>Send</button>
+    </form>
+  </div>
 }
 
-export default App;
+export default App
